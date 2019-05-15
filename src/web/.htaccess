@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #Bazowy URL dla przepisywania adresów, gdy DocumentRoot nie wskazuje na katalog web (względny adres URL katalogu web):
+    #RewriteBase /~student/procedural-mvc/web/
+
+    #RewriteCond %{HTTP_REFERER} !^$
+    #RewriteCond %{HTTP_REFERER} !^http://(www\.)?mydomain.com/.*$ [NC]
+    #RewriteRule \.(gif|jpg|js|css)$ - [F]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ front_controller.php?action=/$1 [QSA]
+</IfModule>
